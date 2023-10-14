@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Introduce una opción ; read opcion 
-codi_pais='aws'
+codi_pais='xx'
 codi_ciudad='xx'
 
 
@@ -36,7 +36,7 @@ do
 		else 
 			if [[ -n "grep $ciudad cities.csv" ]]
 			then 
-				codi_ciudad="$(cut -d',' -f4,5 cities.csv | grep -w $ciudad | cut -d',' -f1 | uniq)"
+				codi_ciudad="$(cut -d',' -f4,5,7 cities.csv | grep -w $codi_pais | grep -w $ciudad | cut -d',' -f1 | uniq)"
 			else 
 				codi_ciudad='xx'
 			fi
@@ -44,7 +44,10 @@ do
 	;;
 	"le")
 		cut -d ',' -f1,2,7 cities.csv | grep -w $codi_pais | cut -d',' -f1,2 | column -s ', ' 
-		
+	;;
+	"lcp") 
+		cut -d ',' -f2,7,11 cities.csv | grep -w $codi_pais | cut -d',' -f1,3  
+	;;	
 	esac
 	echo $codi_pais
 	echo $codi_ciudad
