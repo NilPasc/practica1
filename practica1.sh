@@ -48,6 +48,11 @@ do
 	"lcp") 
 		cut -d ',' -f2,7,11 cities.csv | grep -w $codi_pais | cut -d',' -f1,3  
 	;;	
+	"ecp")
+		cut -d ',' -f2,7,11 cities.csv | grep -w $codi_pais | cut -d',' -f1,3 > "archivosp.csv/$codi_pais.csv"
+ 	;;	
+        "ce")
+		cut -d',' -f2,4,7,11 cities.csv | grep -w $codi_pais | grep -w $codi_ciudad | cut -d',' -f1,4	
 	esac
 	echo $codi_pais
 	echo $codi_ciudad
