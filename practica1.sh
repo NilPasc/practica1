@@ -58,11 +58,7 @@ do
 		cut -d',' -f2,4,7,11 cities.csv | grep -w $codi_pais | grep -w $codi_ciudad | cut -d',' -f1,4  > "archivosc.csv/${codi_pais}_${codi_ciudad}.csv"
 	;;
 	"gwd") 
-<<<<<<< HEAD
- 		cut -d',' -f2 
-=======
 
->>>>>>> 31ba6185731ddf21841fb0fa0a4bb118c422b374
 	
 	esac
 	echo $codi_pais
