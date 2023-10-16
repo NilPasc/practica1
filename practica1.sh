@@ -43,19 +43,19 @@ do
 		fi
 	;;
 	"le")
-		cut -d ',' -f1,2,7 cities.csv | grep -w $codi_pais | cut -d',' -f1,2 | column -s ', ' 
+		cut -d ',' -f1,2,7 cities.csv | grep -w $codi_pais | cut -d',' -f1,2 | awk -F',' '{print $1, $2}' 
 	;;
 	"lcp") 
-		cut -d ',' -f2,7,11 cities.csv | grep -w $codi_pais | cut -d',' -f1,3  
+		cut -d ',' -f2,7,11 cities.csv | grep -w $codi_pais | cut -d',' -f1,3 | awk -F',' '{print $1, $2}'  
 	;;	
 	"ecp")
-		cut -d ',' -f2,7,11 cities.csv | grep -w $codi_pais | cut -d',' -f1,3 > "archivosp.csv/$codi_pais.csv"
+		cut -d ',' -f2,7,11 cities.csv | grep -w $codi_pais | cut -d',' -f1,3 |awk -F',' '{print $1, $2}' > "archivosp.csv/$codi_pais.csv"
  	;;	
         "ce")
-		cut -d',' -f2,4,7,11 cities.csv | grep -w $codi_pais | grep -w $codi_ciudad | cut -d',' -f1,4	
+		cut -d',' -f2,4,7,11 cities.csv | grep -w $codi_pais | grep -w $codi_ciudad | cut -d',' -f1,4 | awk -F',' '{print $1, $2}' 
 	;;
 	"lce")
-		cut -d',' -f2,4,7,11 cities.csv | grep -w $codi_pais | grep -w $codi_ciudad | cut -d',' -f1,4  > "archivosc.csv/${codi_pais}_${codi_ciudad}.csv"
+		cut -d',' -f2,4,7,11 cities.csv | grep -w $codi_pais | grep -w $codi_ciudad | cut -d',' -f1,4 | awk -F',' '{print $1, $2}' > "archivosc.csv/${codi_pais}_${codi_ciudad}.csv"
 	;;
 	"gwd") 
 		echo Introduce el nombre del pueblo ; read pueblo 
