@@ -66,7 +66,17 @@ do
 		else 
 			curl https://www.wikidata.org/wiki/Special:Entity Data//$wdid.json > "archivosj.csv/$wdid.json"
 	fi
-	;; 
+	;;
+        "est") 
+		nord="$(awk -F',' '{ if ($9 > 0) nord +=1 } END { print nord }' cities.csv)" 
+		sur="$(awk -F',' '{ if ($9 < 0) sur +=1 } END { print sur} ' cities.csv)"
+		est="$(awk -F',' '{ if ($10 > 0) oriental +=1 } END { print oriental }' cities.csv)"
+		oest="$(awk -F',' '{ if ($10 < 0) occidental +=1 } END { print occidental }' cities.csv)"
+		NoUbic="$(awk -F',' '{ if ($10 == 0 && $9 == 0) NoUbic +=1 } END { print NoUbic }' cities.csv)"
+		NoWiki="$(awk -F',' '{ if ($11 == '') NoWiki +=1 } END { print NoWiki }' cities.csv)"
+	echo Nord $nord Sur $sur Est $est Oest $oest NoUbic $NoUbic No WDId $NoWiki
+
+	;;	
 	esac
 	echo $codi_pais
 	echo $codi_ciudad
