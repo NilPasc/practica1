@@ -57,11 +57,21 @@ do
 	"lce")
 		cut -d',' -f2,4,7,11 cities.csv | grep -w $codi_pais | grep -w $codi_ciudad | cut -d',' -f1,4  > "archivosc.csv/${codi_pais}_${codi_ciudad}.csv"
 	;;
-	"gwd") a
-	
+	"gwd") 
+		echo Introduce el nombre del pueblo ; read pueblo 
+		wdid="$(cut -d ',' -f2,4,7,11 cities.csv | grep -w $codi_pais | grep -w $codi_ciudad | grep -w $pueblo | cut -d ',' -f4)"
+	if [[ -z "$wdid" ]]
+		then 
+			echo El pueblo seleccionado no tiene WikiDataID
+		else 
+			curl https://www.wikidata.org/wiki/Special:Entity Data//$wdid.json > "archivosj.csv/$wdid.json"
+	fi
+	;; 
 	esac
 	echo $codi_pais
 	echo $codi_ciudad
-
+	echo $wdid 
         echo Introduce una opción ; read opcion       
 done
+
+echo Saliendo de la apicación
