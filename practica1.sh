@@ -73,8 +73,8 @@ do
 		est="$(awk -F',' '{ if ($10 > 0) oriental +=1 } END { print oriental }' cities.csv)"
 		oest="$(awk -F',' '{ if ($10 < 0) occidental +=1 } END { print occidental }' cities.csv)"
 		NoUbic="$(awk -F',' '{ if ($10 == 0 && $9 == 0) NoUbic +=1 } END { print NoUbic }' cities.csv)"
-		NoWiki="$(awk -F',' '{ if ($11 == '') NoWiki +=1 } END { print NoWiki }' cities.csv)"
-	echo Nord $nord Sur $sur Est $est Oest $oest NoUbic $NoUbic No WDId $NoWiki
+		NoWID="$(awk -F',' '{ if ($11 == "") NoWID +=1 } END { print NoWID }' cities.csv)"
+	echo Nord $nord Sur $sur Est $est Oest $oest NoUbic $NoUbic No WDId $NoWID
 
 	;;	
 	esac
